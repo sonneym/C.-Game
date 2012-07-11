@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <!--  <meta http-equiv="X-UA-Compatible" content="chrome=1">  --> 
+	<link rel="stylesheet" href="css/style.css"> 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mg.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/buzz.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/carnival.js" type="text/javascript" charset="utf-8"></script>
+ </head>
+ <body>
+    <source src="audio/ratchet.ogg" type="audio/ogg" preload="auto">
+    <source src="audio/ratchet.mp3" type="audio/mp3" preload="auto">	
+  	<section id="gameArea">
+ 		 <h4>
+ 		 	In each Carnival Cash game 3 winning numbers will be determined.
+Players win by matching their selection to the winning numbers in accordance with the game instructions.
+ 		 </h4>
+ 		 <div id="numbers">
+ 		 	<ul>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li>
+ 		 		<li></li> 
+ 		 	</ul>
+ 		 </div>
+ 		 <section id="tickets">
+ 		 	<div id="ticket1">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 	</div>
+ 		 	<div id="ticket2">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span> & 2<span>nd</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 		<p class="selected2"></p>
+ 		 		<h5>Exact order</h5>
+ 		 	</div>
+ 		 	<div id="ticket3">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span> & 2<span>nd</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 		<p class="selected2"></p>
+ 		 	</div>
+ 		 	<div id="ticket4">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span> & 2<span>nd</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 		<p class="selected2"></p> 
+ 		 		<h5>Any order</h5>
+ 		 	</div>
+ 		 	<div id="ticket5">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span>, 2<span>nd</span> & 3<span>rd</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 		<p class="selected2"></p>
+ 		 		<p class="selected3"></p>
+ 		 	</div>
+ 		 	<div id="ticket6">
+ 		 		Match 
+ 		 		<h3>
+ 		 			1<span>st</span>, 2<span>nd</span> & 3<span>rd</span><br/>NUMBER<br/>SELECTED
+ 		 		</h3>
+ 		 		<p class="selected1"></p>
+ 		 		<p class="selected2"></p>
+ 		 		<p class="selected3"></p>
+ 		 		<h5>Exact order</h5>
+ 		 	</div>
+ 		 	
+ 		 </section>
+ 		 
+ 		 <div id="pointer"></div>
+ 		 <div id="spin"></div>
+ 		 <div id="wheel">
+ 		 	<ul class="numbers">
+				<li class="pick1" data-degree="22"></li>
+				<li class="pick2" data-degree="37"></li>
+				<li class="pick3" data-degree="52"></li>
+				<li class="pick4" data-degree="67"></li>
+				<li class="pick5" data-degree="82"></li>
+				<li class="pick6" data-degree="97"></li>
+				<li class="pick7" data-degree="112"></li>
+				<li class="pick8" data-degree="127"></li>
+				<li class="pick9" data-degree="142"></li>
+				<li class="pick10" data-degree="154"></li>
+				<li class="pick11" data-degree="169"></li>
+				<li class="pick12 disabled" data-degree="-176"></li> 
+				<li class="pick13" data-degree="-161"></li>
+				<li class="pick14" data-degree="-146"></li>
+				<li class="pick15" data-degree="-131"></li>
+				<li class="pick16" data-degree="-115"></li>
+				<li class="pick17" data-degree="-100"></li>
+				<li class="pick18" data-degree="-85"></li>
+				<li class="pick19" data-degree="-70"></li>
+				<li class="pick20" data-degree="-55"></li>
+				<li class="pick21" data-degree="-40"></li>
+				<li class="pick22" data-degree="-24"></li>
+				<li class="pick23" data-degree="-8"></li>
+				<li class="pick24" data-degree="6"></li> 
+			</ul>
+ 		 </div>
+ 		 <div id="circle"></div>
+ 		 <div id="guy"></div>
+ 	</section>
+ 	 
+	<script type="text/javascript" charset="utf-8"> 
+		var carnival;
+		jQuery(function(){
+			var gameArea = $('#gameArea');
+			    carnival  = new Carnival;  
+			MG.api.resetGame = function() { 
+				carnival.reset();
+				carnival.render();
+			}
+			$("#ticket1").trigger('click');
+		});
+	</script> 
+	<script id="ticketTemplate" type="text/html">
+		<div id="ticket"> 
+		</div>
+	</script> 
+</body>
+</html>
